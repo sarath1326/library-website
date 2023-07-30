@@ -66,7 +66,7 @@ module.exports.addproducts=(data)=>{
         imageBase64:img,
         name:data.details.name,
         author:data.details.author,
-        language:data.details.author,
+        language:data.details.language,
         price:data.details.price,
         publisher:data.details.publisher,
         cotegory:data.details.cotegory,
@@ -94,19 +94,37 @@ module.exports.addproducts=(data)=>{
     })
 
 
-
-
-
-
-
-
-
-         
-
-
-
 })
 
+}
 
+
+module.exports.viewpro=()=>{
+
+    return new Promise ( async(resolve,reject)=>{
+
+             
+              const prodata=mongoos.model("products",addproductsschema)
+
+              const result= await prodata.find().lean()
+
+              if(result){
+
+                   resolve(result)
+
+              }else{
+               
+                reject("errr")
+              
+            }
+
+
+              
+
+
+
+          
+
+    })
 
 }

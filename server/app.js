@@ -20,7 +20,7 @@ app.use(cors())
 
   dbconnecting.dbconnecting()
 
-   app.use("/",userrouting)
+   app.use("/user",userrouting)
    app.use("/admin",adminrouter)
 
 

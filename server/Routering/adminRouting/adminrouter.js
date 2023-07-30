@@ -17,21 +17,49 @@ router.post("/addproducts",store.single("image"),(req,res)=>{
     const data={
         img:req.file,
         details:req.body
-    }
 
-    db.addproducts(data).then((respo)=>{
+      }
 
-        res.json("data added sucssfully")
+      if (data){
+    
+        db.addproducts(data).then((respo)=>{
 
-    }).catch(err=>{
+            res.json("data added sucssfully")
+    
+        }).catch(err=>{
+    
+            res.json("filed"+err)
+        })
+      } else{
+     
+        res.json("data not receved in server")
+      }
 
-        res.json("filed"+err)
     })
 
 
+    router.get("/viewproadmin",(req,res)=>{
+
+        db.viewpro().then((responce)=>{
+
+            res.json(responce)
+
+        }).catch(err=>{
+
+            res.sendStatus(404)
+
+            
+
+        })
+
 
 
     })
+
+
+   
+
+
 
 
 
